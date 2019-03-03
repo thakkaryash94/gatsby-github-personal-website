@@ -8,24 +8,26 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
+import Helmet from "react-helmet"
 
-import Header from "./header"
 import "./layout.scss"
 
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
+      query {
+        github {
+          viewer {
+            name
           }
         }
       }
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Helmet>
+          <title>{data.github.viewer.name}</title>
+        </Helmet>
         <div
           style={{
             margin: `0 auto`,
@@ -35,11 +37,6 @@ const Layout = ({ children }) => (
           }}
         >
           <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
         </div>
       </>
     )}
