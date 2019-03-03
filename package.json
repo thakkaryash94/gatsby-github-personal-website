@@ -1,22 +1,27 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "name": "gatsby-github-personal-website",
+  "private": false,
+  "description": "Repo for github portfolio using gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Yash Thakkar <thakkaryash94@gmail.com>",
   "dependencies": {
     "gatsby": "^2.1.19",
     "gatsby-image": "^2.0.30",
     "gatsby-plugin-manifest": "^2.0.20",
     "gatsby-plugin-offline": "^2.0.24",
     "gatsby-plugin-react-helmet": "^3.0.7",
+    "gatsby-plugin-sass": "^2.0.10",
     "gatsby-plugin-sharp": "^2.0.23",
     "gatsby-source-filesystem": "^2.0.23",
+    "gatsby-source-graphql": "^2.0.11",
     "gatsby-transformer-sharp": "^2.1.15",
+    "gatsby-transformer-yaml": "^2.1.8",
+    "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "styled-components": "^4.1.3"
   },
   "devDependencies": {
     "prettier": "^1.16.4"
@@ -35,9 +40,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/thakkaryash94/gatsby-github-personal-website"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/thakkaryash94/gatsby-github-personal-website/issues"
   }
 }
