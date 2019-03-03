@@ -5,16 +5,24 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import React, { useContext, useEffect } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import Helmet from "react-helmet"
+import { ThemeContext } from "../theme-context"
 
 import "./layout.scss"
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
+function Layout({ children }) {
+  const { state, dispatch } = useContext(ThemeContext)
+  const { theme } = state
+  useEffect(
+    () => {
+      document.body.style.backgroundColor = theme.background
+    },
+    [theme.background]
+  )
+  const { github: { viewer: { name } } } = useStaticQuery(
+    graphql`
       query {
         github {
           viewer {
@@ -22,29 +30,15 @@ const Layout = ({ children }) => (
           }
         }
       }
-    `}
-    render={data => (
-      <>
-        <Helmet>
-          <title>{data.github.viewer.name}</title>
-        </Helmet>
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          <main>{children}</main>
-        </div>
-      </>
-    )}
-  />
-)
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+    `
+  )
+  return (
+    <>
+      <Helmet title={name}></Helmet>
+      <main>{children}</main>
+    </>
+  )
 }
+
 
 export default Layout
