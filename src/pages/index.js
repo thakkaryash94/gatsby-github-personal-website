@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 
 import Layout from "../components/layout"
 import MastHead from '../components/mastHead'
-import Projects from '../components/porjects'
+import Projects from '../components/projects'
 import Topics from '../components/topics'
 import { ThemeContext } from "../theme-context"
 
