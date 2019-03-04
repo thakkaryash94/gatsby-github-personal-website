@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from "../theme-context"
 
 function RepoCard({ repository }) {
+  const { state: { mode: theme } } = useContext(ThemeContext)
   return (
-    <div className="github-component height-full text-left {% if site.style == 'dark' %}box-shadow{% else %}border border-gray-light{% endif %} bg-white rounded-1 p-3">
+    <div className={`github-component height-full text-left ${theme === 'dark' ? 'box-shadow' : 'border border-gray-light'} bg-white rounded-1 p-3`}>
       <div className="d-flex flex-justify-between flex-items-start mb-1">
         <h1 className="f4 lh-condensed mb-1">
-          <a href={repository.html_url}>
-
+          <a href={repository.url}>
             <span className="text-normal">{repository.owner.login} /</span>
             {repository.name}
           </a>

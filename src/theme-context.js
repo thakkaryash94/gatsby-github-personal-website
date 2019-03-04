@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useReducer, createContext } from 'react'
 
 export const themes = {
   light: {
     foreground: '#000000',
-    background: '#eeeeee',
+    background: '#ffffff',
   },
   dark: {
     foreground: '#ffffff',
@@ -12,24 +12,24 @@ export const themes = {
 }
 
 const initialState = {
-  mode: 'LIGHT',
-  theme: themes.light
+  mode: 'DARK',
+  theme: themes.dark
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_THEME':
-      return { theme: themes.dark, mode: 'DARK' }
+      return state.mode === 'LIGHT' ? { theme: themes.dark, mode: 'DARK' } : { theme: themes.light, mode: 'LIGHT' }
   }
 }
 
-const ThemeContext = React.createContext({
+const ThemeContext = createContext({
   state: initialState,
   dispatch: () => { }
 })
 
 function ThemeContextProvider(props) {
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
   const value = { state, dispatch }
   return (
     <ThemeContext.Provider value={value}>{props.children}</ThemeContext.Provider>
