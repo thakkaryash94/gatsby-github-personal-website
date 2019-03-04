@@ -12,14 +12,14 @@ export const themes = {
 }
 
 const initialState = {
-  mode: 'DARK',
+  style: 'DARK',
   theme: themes.dark
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_THEME':
-      return state.mode === 'LIGHT' ? { theme: themes.dark, mode: 'DARK' } : { theme: themes.light, mode: 'LIGHT' }
+      return state.style === 'LIGHT' ? { theme: themes.dark, style: 'DARK' } : { theme: themes.light, style: 'LIGHT' }
   }
 }
 

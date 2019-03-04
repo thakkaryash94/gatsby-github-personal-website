@@ -13,8 +13,7 @@ import { ThemeContext } from "../theme-context"
 import "./layout.scss"
 
 function Layout({ children }) {
-  const { state, dispatch } = useContext(ThemeContext)
-  const { theme } = state
+  const { state: { theme }, dispatch } = useContext(ThemeContext)
   useEffect(
     () => {
       document.body.style.backgroundColor = theme.background

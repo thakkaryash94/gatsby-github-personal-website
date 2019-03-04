@@ -4,7 +4,7 @@ import RepoCard from "./repoCard"
 import { ThemeContext } from "../theme-context"
 
 function Projects() {
-  const { state: { mode: theme } } = useContext(ThemeContext)
+  const { state: { style } } = useContext(ThemeContext)
   const { github: { viewer: { repositories } } } = useStaticQuery(
     graphql`
       query {
@@ -31,8 +31,8 @@ function Projects() {
   )
   return (
     <>
-      <h2 className={theme === 'DARK' ? "text-white" : ""}>My Projects</h2>
-      <p className={`f4 mb-4 ${theme === 'DARK' ? 'text-white' : 'text-gray'}`}>GitHub repositories that I've built.</p>
+      <h2 className={style === 'DARK' ? "text-white" : ""}>My Projects</h2>
+      <p className={`f4 mb-4 ${style === 'DARK' ? 'text-white' : 'text-gray'}`}>GitHub repositories that I've built.</p>
       <div className="d-sm-flex flex-wrap gutter-condensed mb-4">
         {repositories.nodes.map((repository, i) => (
           <div key={i} className="col-sm-6 col-md-12 col-lg-6 col-xl-4 mb-3">
