@@ -19,7 +19,7 @@ function IndexPage() {
       <div className="my-6">
         <Topics />
       </div>
-      <button onClick={() => dispatch({ type: 'TOGGLE_THEME' })}>Theme</button>
+      {/* <button onClick={() => dispatch({ type: 'TOGGLE_THEME' })}>Theme</button> */}
     </div>
   </Layout> :
     <Layout>
@@ -31,11 +31,11 @@ function IndexPage() {
           <div className="mx-auto" style={{ maxWidth: '900px' }}>
             <Projects />
             <Topics />
-            <button onClick={() => dispatch({ type: 'TOGGLE_THEME' })}>Theme</button>
+            {/* <button onClick={() => dispatch({ type: 'TOGGLE_THEME' })}>Theme</button> */}
           </div>
         </div>
       </div>
-    </Layout >
+    </Layout>
 }
 
 export default IndexPage

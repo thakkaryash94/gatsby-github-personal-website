@@ -2,24 +2,28 @@ import React, { useReducer, createContext } from 'react'
 
 export const themes = {
   light: {
-    foreground: '#000000',
     background: '#ffffff',
   },
   dark: {
-    foreground: '#ffffff',
     background: '#2f363d',
   },
 }
 
 const initialState = {
-  style: 'DARK',
-  theme: themes.dark
+  style: 'LIGHT',
+  theme: themes.light
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_THEME':
       return state.style === 'LIGHT' ? { theme: themes.dark, style: 'DARK' } : { theme: themes.light, style: 'LIGHT' }
+    case 'THEME':
+      if (action.value == 'light') {
+        return { theme: themes.light, style: 'LIGHT' }
+      } else {
+        return { theme: themes.dark, style: 'DARK' }
+      }
   }
 }
 
