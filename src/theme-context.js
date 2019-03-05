@@ -10,20 +10,16 @@ export const themes = {
 }
 
 const initialState = {
-  style: 'LIGHT',
+  style: 'light',
   theme: themes.light
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_THEME':
-      return state.style === 'LIGHT' ? { theme: themes.dark, style: 'DARK' } : { theme: themes.light, style: 'LIGHT' }
-    case 'THEME':
-      if (action.value == 'light') {
-        return { theme: themes.light, style: 'LIGHT' }
-      } else {
-        return { theme: themes.dark, style: 'DARK' }
-      }
+      return state.style === 'light' ? { theme: themes.dark, style: 'dark' } : { theme: themes.light, style: 'light' }
+    case 'CHANGE_THEME':
+      return action.value === 'light' ? { theme: themes.light, style: 'light' } : { theme: themes.dark, style: 'dark' }
   }
 }
 

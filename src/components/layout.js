@@ -8,12 +8,17 @@
 import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Helmet from "react-helmet"
+import useSiteMetadata from '../hooks/siteMetaData'
 import { ThemeContext } from "../theme-context"
 
 import "./layout.scss"
 
 function Layout({ children }) {
-  const { state: { theme }, dispatch } = useContext(ThemeContext)
+  const { style } = useSiteMetadata()
+  const { state: { style: stateStyle, theme }, dispatch } = useContext(ThemeContext)
+  if (stateStyle !== style) {
+    dispatch({ type: 'CHANGE_THEME', value: style })
+  }
   useEffect(
     () => {
       document.body.style.backgroundColor = theme.background

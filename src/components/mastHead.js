@@ -30,30 +30,30 @@ function mastHead() {
   return (
     <>
       <img src={user.avatarUrl} alt="user-avatar" className="circle mb-3" style={{ maxWidth: '150px' }} />
-      <h1 className={style === 'DARK' ? "text-white" : "mb-2 lh-condensed"}>{user.name ? user.name : user.login}</h1>
-      <p className={`mb-3 f4 ${style === 'DARK' ? 'text-white' : 'text-gray'}`}>
+      <h1 className={style === 'dark' ? "text-white" : "mb-2 lh-condensed"}>{user.name ? user.name : user.login}</h1>
+      <p className={`mb-3 f4 ${style === 'dark' ? 'text-white' : 'text-gray'}`}>
         {user.bio}
       </p>
       <div className="f4 mb-6">
         {user.name &&
           <div className={metadata_styles}>
-            <GoMarkGithub size={20} className="mr-2 v-align-middle" color={style === 'DARK' ? "#ffffff" : "#24292e"} />
-            <a href={`https://github.com/${user.login}`} className={style === 'DARK' ? "text-white" : ""}>
+            <GoMarkGithub size={20} className="mr-2 v-align-middle" color={style === 'dark' ? "#ffffff" : "#24292e"} />
+            <a href={`https://github.com/${user.login}`} className={style === 'dark' ? "text-white" : ""}>
               @{user.login}
             </a>
           </div>
         }
         {user.email &&
           <div className={metadata_styles}>
-            <GoMail size={20} className="mr-2 v-align-middle" color={style === 'DARK' ? "#ffffff" : "#24292e"} />
-            <a href={`mailto:${user.email}`} className={style === 'DARK' ? "text-white" : ""}>
+            <GoMail size={20} className="mr-2 v-align-middle" color={style === 'dark' ? "#ffffff" : "#24292e"} />
+            <a href={`mailto:${user.email}`} className={style === 'dark' ? "text-white" : ""}>
               {user.email}
             </a>
           </div>
         }
         {user.location &&
-          <div className={`${metadata_styles} ` + (style === 'DARK' ? "text-white" : "")}>
-            <GoLocation size={20} className="mr-2 v-align-middle" color={style === 'DARK' ? "#ffffff" : "#24292e"} />
+          <div className={`${metadata_styles} ` + (style === 'dark' ? "text-white" : "")}>
+            <GoLocation size={20} className="mr-2 v-align-middle" color={style === 'dark' ? "#ffffff" : "#24292e"} />
             {user.location}
           </div>
         }
