@@ -25,7 +25,6 @@ function Topics() {
   const topics = edges[0].node.topics
   return (
     <>
-      <h2 className="text-white"></h2>
       <h2 className={style === 'dark' ? "text-white" : ""}>My Interests</h2>
       <p className={`f4 mb-4 ${style === 'dark' ? 'text-white' : 'text-gray'}`}>Topics that I want to learn more about.</p>
       <div className="d-sm-flex flex-wrap gutter-condensed mb-4">

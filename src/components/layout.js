@@ -6,8 +6,6 @@
  */
 
 import React, { useContext, useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Helmet from "react-helmet"
 import useSiteMetadata from '../hooks/siteMetaData'
 import { ThemeContext } from "../theme-context"
 
@@ -25,22 +23,8 @@ function Layout({ children }) {
     },
     [theme.background]
   )
-  const { github: { viewer: { name } } } = useStaticQuery(
-    graphql`
-      query {
-        github {
-          viewer {
-            name
-          }
-        }
-      }
-    `
-  )
   return (
-    <>
-      <Helmet title={name}></Helmet>
-      <main>{children}</main>
-    </>
+    <main>{children}</main>
   )
 }
 
