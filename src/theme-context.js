@@ -10,8 +10,8 @@ export const themes = {
 }
 
 const initialState = {
-  style: 'light',
-  theme: themes.light
+  style: 'dark',
+  theme: themes.dark
 }
 
 const reducer = (state, action) => {
