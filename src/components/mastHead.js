@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import Emoji from 'react-emoji-render'
 import { GoMarkGithub, GoLocation, GoMail } from 'react-icons/go'
 import useSiteMetadata from '../hooks/siteMetaData'
 import { ThemeContext } from "../theme-context"
@@ -32,7 +33,7 @@ function mastHead() {
       <img src={user.avatarUrl} alt="user-avatar" className="circle mb-3" style={{ maxWidth: '150px' }} />
       <h1 className={style === 'dark' ? "text-white" : "mb-2 lh-condensed"}>{user.name ? user.name : user.login}</h1>
       <p className={`mb-3 f4 ${style === 'dark' ? 'text-white' : 'text-gray'}`}>
-        {user.bio}
+        <Emoji text={user.bio || ''} />
       </p>
       <div className="f4 mb-6">
         {user.name &&

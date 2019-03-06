@@ -23,7 +23,7 @@ function IndexPage() {
     </div>
   </Layout> :
     <Layout>
-      <div className={`d-md-flex ${style === 'dark' ? 'border-md-bottom' : ''}`}>
+      <div className={`d-md-flex ${style !== 'dark' ? 'border-md-bottom' : ''}`}>
         <div className={`flex-self-stretch ${style === 'dark' ? 'bg-gray-dark' : 'border-md-right border-gray-light bg-white'} col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6`}>
           <MastHead />
         </div>

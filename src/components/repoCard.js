@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import Emoji from 'react-emoji-render'
 import { ThemeContext } from "../theme-context"
 
 function RepoCard({ repository }) {
@@ -13,7 +14,7 @@ function RepoCard({ repository }) {
           </a>
         </h1>
       </div>
-      <div className="text-gray mb-2 ws-normal">{repository.description}</div>
+      <div className="text-gray mb-2 ws-normal"><Emoji text={repository.description || ''} /></div>
       <div className="d-flex f6">
         <a href={repository.url} className="d-inline-block link-gray mr-4">
           <svg className="octicon octicon-star mr-1" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fillRule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>{repository.stargazers.totalCount}
