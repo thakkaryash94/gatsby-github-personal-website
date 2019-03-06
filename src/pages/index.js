@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import { ThemeContext } from "../theme-context"
 import MastHead from '../components/mastHead'
 import Projects from '../components/projects'
-import Topics from '../components/topics'
+import Interests from '../components/interests'
 import SEO from '../components/seo'
 import useSiteMetadata from '../hooks/siteMetaData'
 
@@ -20,7 +20,7 @@ function IndexPage() {
           <Projects />
         </div>
         <div className="my-6">
-          <Topics />
+          <Interests />
         </div>
         {/* <button onClick={() => dispatch({ type: 'TOGGLE_THEME' })}>Theme</button> */}
       </div> :
@@ -31,7 +31,7 @@ function IndexPage() {
         <div className="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0" style={{ backgroundColor: style === 'dark' ? "#2f363d" : "#fafbfc" }}>
           <div className="mx-auto" style={{ maxWidth: '900px' }}>
             <Projects />
-            <Topics />
+            <Interests />
             {/* <button onClick={() => dispatch({ type: 'TOGGLE_THEME' })}>Theme</button> */}
           </div>
         </div>
