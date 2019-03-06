@@ -2,6 +2,7 @@
   "name": "gatsby-github-personal-website",
   "private": false,
   "description": "Repo for github portfolio using gatsby",
+  "homepage": "https://github.com/thakkaryash94/gatsby-github-personal-website",
   "version": "0.1.0",
   "author": "Yash Thakkar <thakkaryash94@gmail.com>",
   "dependencies": {
@@ -20,6 +21,7 @@
     "react-icons": "^3.4.0"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "prettier": "^1.16.4"
   },
   "keywords": [
@@ -32,6 +34,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
+    "deploy": "gh-pages -d public",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "repository": {
