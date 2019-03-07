@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Emoji from 'react-emoji-render'
-import { GoMarkGithub, GoLocation, GoMail } from 'react-icons/go'
+import Octicon, { MarkGithub, Location, Mail } from '@githubprimer/octicons-react'
 import useSiteMetadata from '../hooks/siteMetaData'
 import { ThemeContext } from "../theme-context"
 
@@ -38,7 +38,7 @@ function mastHead() {
       <div className="f4 mb-6">
         {user.name &&
           <div className={metadata_styles}>
-            <GoMarkGithub size={20} className="mr-2 v-align-middle" color={style === 'dark' ? "#ffffff" : "#24292e"} />
+            <span style={{ color: style === 'dark' ? "#ffffff" : "#24292e" }}><Octicon icon={MarkGithub} size={20} verticalAlign='middle' className="mr-2" /></span>
             <a href={`https://github.com/${user.login}`} className={style === 'dark' ? "text-white" : ""}>
               @{user.login}
             </a>
@@ -46,7 +46,7 @@ function mastHead() {
         }
         {user.email &&
           <div className={metadata_styles}>
-            <GoMail size={20} className="mr-2 v-align-middle" color={style === 'dark' ? "#ffffff" : "#24292e"} />
+            <span style={{ color: style === 'dark' ? "#ffffff" : "#24292e" }}><Octicon icon={Mail} size={20} verticalAlign='middle' className="mr-2" /></span>
             <a href={`mailto:${user.email}`} className={style === 'dark' ? "text-white" : ""}>
               {user.email}
             </a>
@@ -54,7 +54,7 @@ function mastHead() {
         }
         {user.location &&
           <div className={`${metadata_styles} ` + (style === 'dark' ? "text-white" : "")}>
-            <GoLocation size={20} className="mr-2 v-align-middle" color={style === 'dark' ? "#ffffff" : "#24292e"} />
+            <span style={{ color: style === 'dark' ? "#ffffff" : "#24292e" }}><Octicon icon={Location} size={20} verticalAlign='middle' className="mr-2" /></span>
             {user.location}
           </div>
         }

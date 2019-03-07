@@ -6,6 +6,7 @@
   "version": "0.1.0",
   "author": "Yash Thakkar <thakkaryash94@gmail.com>",
   "dependencies": {
+    "@githubprimer/octicons-react": "^8.5.0",
     "gatsby": "^2.1.19",
     "gatsby-plugin-react-helmet": "^3.0.7",
     "gatsby-plugin-sass": "^2.0.10",
@@ -17,8 +18,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-emoji-render": "^0.6.0",
-    "react-helmet": "^5.2.0",
-    "react-icons": "^3.4.0"
+    "react-helmet": "^5.2.0"
   },
   "devDependencies": {
     "gh-pages": "^2.0.1",
