@@ -3,9 +3,11 @@ import React, { useReducer, createContext } from 'react'
 export const themes = {
   light: {
     background: '#ffffff',
+    iconColor: '#24292e'
   },
   dark: {
     background: '#2f363d',
+    iconColor: '#ffffff'
   },
 }
 

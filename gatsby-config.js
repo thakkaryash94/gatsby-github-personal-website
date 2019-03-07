@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    style: `light`,
+    style: `dark`,
     layout: `stacked`
   },
   plugins: [
@@ -11,26 +11,26 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `yaml`,
-        path: `${__dirname}/src/data`,
+        path: `${__dirname}/src/data`
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // 'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/data/posts`
+      },
+    },
+    `gatsby-transformer-remark`,
     {
       resolve: "gatsby-source-graphql",
       options: {
         typeName: "GitHub",
         fieldName: "github",
-        // Url to query from
         url: "https://api.github.com/graphql",
-        // HTTP headers
         headers: {
-          // Learn about environment variables: https://gatsby.dev/env-vars
           Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
-        },
-        // Additional options to pass to node-fetch
-        fetchOptions: {},
+        }
       },
     },
   ],

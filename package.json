@@ -12,6 +12,7 @@
     "gatsby-plugin-sass": "^2.0.10",
     "gatsby-source-filesystem": "^2.0.23",
     "gatsby-source-graphql": "^2.0.11",
+    "gatsby-transformer-remark": "^2.3.1",
     "gatsby-transformer-yaml": "^2.1.8",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
@@ -34,7 +35,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "deploy": "gh-pages -d public",
+    "publish": "gh-pages -d public",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "repository": {

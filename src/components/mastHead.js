@@ -5,8 +5,8 @@ import Octicon, { MarkGithub, Location, Mail } from '@githubprimer/octicons-reac
 import useSiteMetadata from '../hooks/siteMetaData'
 import { ThemeContext } from "../theme-context"
 
-function mastHead() {
-  const { state: { style } } = useContext(ThemeContext)
+function mastHead({ metaData }) {
+  const { state: { style, theme } } = useContext(ThemeContext)
 
   const { layout } = useSiteMetadata()
   const { github: { viewer: user } } = useStaticQuery(
@@ -35,33 +35,35 @@ function mastHead() {
       <p className={`mb-3 f4 ${style === 'dark' ? 'text-white' : 'text-gray'}`}>
         <Emoji text={user.bio || ''} />
       </p>
-      <div className="f4 mb-6">
-        {user.name &&
-          <div className={metadata_styles}>
-            <span style={{ color: style === 'dark' ? "#ffffff" : "#24292e" }}><Octicon icon={MarkGithub} size={20} verticalAlign='middle' className="mr-2" /></span>
-            <a href={`https://github.com/${user.login}`} className={style === 'dark' ? "text-white" : ""}>
-              @{user.login}
-            </a>
-          </div>
-        }
-        {user.email &&
-          <div className={metadata_styles}>
-            <span style={{ color: style === 'dark' ? "#ffffff" : "#24292e" }}><Octicon icon={Mail} size={20} verticalAlign='middle' className="mr-2" /></span>
-            <a href={`mailto:${user.email}`} className={style === 'dark' ? "text-white" : ""}>
-              {user.email}
-            </a>
-          </div>
-        }
-        {user.location &&
-          <div className={`${metadata_styles} ` + (style === 'dark' ? "text-white" : "")}>
-            <span style={{ color: style === 'dark' ? "#ffffff" : "#24292e" }}><Octicon icon={Location} size={20} verticalAlign='middle' className="mr-2" /></span>
-            {user.location}
-          </div>
-        }
-        {user.isHireable &&
-          <span title="Hire me" className="d-inline-block f5 rounded-2 text-white bg-green py-1 px-2">Available for hire</span>
-        }
-      </div>
+      {metaData &&
+        <div className="f4 mb-6">
+          {user.name &&
+            <div className={metadata_styles}>
+              <span style={{ color: theme.iconColor }}><Octicon icon={MarkGithub} size={20} verticalAlign='middle' className="mr-2" ariaLabel="GitHub" /></span>
+              <a href={`https://github.com/${user.login}`} className={style === 'dark' && "text-white"}>
+                @{user.login}
+              </a>
+            </div>
+          }
+          {user.email &&
+            <div className={metadata_styles}>
+              <span style={{ color: theme.iconColor }}><Octicon icon={Mail} size={20} verticalAlign='middle' className="mr-2" ariaLabel="email" /></span>
+              <a href={`mailto:${user.email}`} className={style === 'dark' && "text-white"}>
+                {user.email}
+              </a>
+            </div>
+          }
+          {user.location &&
+            <div className={`${metadata_styles} ` + (style === 'dark' && "text-white")}>
+              <span style={{ color: theme.iconColor }}><Octicon icon={Location} size={20} verticalAlign='middle' className="mr-2" ariaLabel="Location" /></span>
+              {user.location}
+            </div>
+          }
+          {user.isHireable &&
+            <span title="Hire me" className="d-inline-block f5 rounded-2 text-white bg-green py-1 px-2">Available for hire</span>
+          }
+        </div>
+      }
     </>
   )
 }
