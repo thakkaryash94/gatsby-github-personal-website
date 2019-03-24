@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import MastHead from '../components/mastHead'
 import useSiteMetadata from '../hooks/siteMetaData'
 import { ThemeContext } from "../theme-context"
+import { formatePostDate } from '../components/postCard'
 
 export default ({ data }) => {
   const { state: { style } } = useContext(ThemeContext)
@@ -45,7 +46,7 @@ export default ({ data }) => {
                     </span>
                   </p>
                   <h1 className="f00-light lh-condensed">{post.frontmatter.title}</h1>
-                  <p className={`${style === 'dark' ? 'text-white' : 'text-gray'} mb-5`}>Published</p>
+                  <p className={`${style === 'dark' ? 'text-white' : 'text-gray'} mb-5`}>Published {formatePostDate(`${post.fields.postDate}`)}</p>
                   <div dangerouslySetInnerHTML={{ __html: post.html }} />
                 </div>
               </div>
@@ -64,6 +65,9 @@ export const query = graphql`
       frontmatter {
         title
       }
+      fields {
+          postDate
+        }
       }
     }
   `

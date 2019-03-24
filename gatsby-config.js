@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    style: `dark`,
-    layout: `stacked`
+    style: `light`,
+    layout: `sidebar`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

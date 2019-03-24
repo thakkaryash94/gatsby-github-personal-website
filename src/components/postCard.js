@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from "gatsby"
 import { ThemeContext } from "../theme-context"
 
-function formateDate(dateString) {
+export function formatePostDate(dateString) {
   const date = new Date(dateString)
   return `${date.toLocaleDateString('en-GB', { month: 'short' })} ${date.toLocaleDateString('en-GB', { day: 'numeric' })}, ${date.toLocaleDateString('en-GB', { year: 'numeric' })}`
 }
@@ -18,7 +18,7 @@ function PostCard({ post }) {
           </Link>
         </h1>
       </div>
-      <div className="text-gray mb-2 ws-normal">{formateDate(`${post.fields.postDate}`)}</div>
+      <div className="text-gray mb-2 ws-normal">{formatePostDate(`${post.fields.postDate}`)}</div>
     </div>
 
   )
