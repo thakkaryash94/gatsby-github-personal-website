@@ -40,7 +40,7 @@ function mastHead({ metaData }) {
           {user.name &&
             <div className={metadata_styles}>
               <span style={{ color: theme.iconColor }}><Octicon icon={MarkGithub} size={20} verticalAlign='middle' className="mr-2" ariaLabel="GitHub" /></span>
-              <a href={`https://github.com/${user.login}`} className={style === 'dark' && "text-white"}>
+              <a href={`https://github.com/${user.login}`} className={style === 'dark' ? "text-white" : ""}>
                 @{user.login}
               </a>
             </div>
@@ -48,7 +48,7 @@ function mastHead({ metaData }) {
           {user.email &&
             <div className={metadata_styles}>
               <span style={{ color: theme.iconColor }}><Octicon icon={Mail} size={20} verticalAlign='middle' className="mr-2" ariaLabel="email" /></span>
-              <a href={`mailto:${user.email}`} className={style === 'dark' && "text-white"}>
+              <a href={`mailto:${user.email}`} className={style === 'dark' ? "text-white" : ""}>
                 {user.email}
               </a>
             </div>

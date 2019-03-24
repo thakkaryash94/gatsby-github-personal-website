@@ -7,7 +7,7 @@ import useSiteMetadata from '../hooks/siteMetaData'
 import { ThemeContext } from "../theme-context"
 
 export default ({ data }) => {
-  const { state: { style, theme } } = useContext(ThemeContext)
+  const { state: { style } } = useContext(ThemeContext)
   const { layout } = useSiteMetadata()
   const post = data.markdownRemark
   return (
@@ -16,9 +16,9 @@ export default ({ data }) => {
         <div className="container-lg py-6 p-responsive text-center">
           <MastHead metaData={false} />
           <div className="container-md f4 text-left border rounded-2 bg-white p-3 p-sm-5 mt-6">
-            <p class="f5"><span className="d-flex flex-items-center" style={{ color: "#0366d6" }}>
+            <p className="f5"><span className="d-flex flex-items-center" style={{ color: "#0366d6" }}>
               <Octicon icon={ChevronLeft} size={16} verticalAlign='middle' ariaLabel="Home" className="mr-2" />
-              <Link to="/" >Home</Link>
+              <Link to="/">Home</Link>
             </span>
             </p>
             <h1 className="f00-light lh-condensed">{post.frontmatter.title}</h1>
