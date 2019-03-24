@@ -49,7 +49,20 @@ GITHUB_TOKEN=YOUR_GITHUB_TOKEN npm run develop
 
 When you host your personal website's code on GitHub, you get the support of free hosting through GitHub Pages.
 
-**The fastest approach** is to rename your repository `username.github.io`, where `username` is your GitHub username (or organization name). Then, the next time you push any changes to your repository's `master` branch, they'll be accessible on the web at your `username.github.io` address.
+GitHub Pages support jekyll projects out of the box. Our project is in JavaScript, that's why we have to do follow certain steps to host our personal website.
+
+To host our website on GitHub, we need to create a new branch name `gh-pages` and change GitHub Pages source to `gh-pages`. You can read out it in details [here](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages). Now follow below steps to publish your personal website.
+
+- We run below command to generate static build for our personal website. This command will create public folder with bunch of files-folders for our website.
+
+```
+GITHUB_TOKEN=YOUR_GITHUB_TOKEN npm run build
+```
+
+Now we have our static `public` folder, we have to push it `gh-pages` branch so that GitHub Pages can host those files and display it as our personal website. To do that, we have a handy `publish` script in `package.json`. Run below command to push your public folder to `gh-pages` branch. **Do not forget to build first before publish.**
+```
+npm run publish
+```
 
 **If you want to use a custom domain**, you'll want to add it to your repository's "Custom domain" settings on github.com. And then register and/or [configure your domain with a DNS provider](https://help.github.com/articles/quick-start-setting-up-a-custom-domain/).
 
@@ -59,23 +72,19 @@ It's your website, and you control the source code. So you can customize everyth
 
 ### Quick configuration changes
 
-Most customizations can be done in a matter of seconds, by revising your repository's `_config.yml` file. Just remember to restart your local server each time you save new changes so your Jekyll-powered website rebuilds correctly:
-
-1. Shut down your server by entering the keyboard command <kbd>CTRL</kbd>+<kbd>c</kbd>
-2. Restart your server: `jekyll serve`
-
+Most customizations can be done in a matter of seconds, by revising your repository's `gatsby-config.js` file.
 
 #### Layout
 
-By default, your website will display in a two-column layout on larger-screen devices, with your photo, name, and basic information displayed in a left-aligned "sidebar." But you can quickly switch to a "stacked" single-column layout by changing the line in your `_config.yml` file that reads `layout: sidebar` to `layout: stacked`.
+By default, your website will display in a two-column layout on larger-screen devices, with your photo, name, and basic information displayed in a left-aligned "sidebar." But you can quickly switch to a "stacked" single-column layout by changing the line in your `gatsby-config.js` file that reads `layout: sidebar` to `layout: stacked`.
 
 #### Style
 
-By default, your website appears with a "light" white and gray background, with dark text. But you can quickly switch to a "dark" background with white text by changing the line in your `_config.yml` file that reads `style: light` to `style: dark`.
+By default, your website appears with a "light" white and gray background, with dark text. But you can quickly switch to a "dark" background with white text by changing the line in your `gatsby-config.js` file that reads `style: light` to `style: dark`.
 
 #### Topics
 
-Your website comes pre-configured with three topics (e.g. "Web design" and "Sass") that appear in a section titled "My Interests." These are also stored in your repository's `_config.yml` file, where you can define each topic's name and two other optional details:
+Your website comes pre-configured with three topics (e.g. "Web design" and "Sass") that appear in a section titled "My Interests." These are also stored in your repository's `gatsby-config.js` file, where you can define each topic's name and two other optional details:
 
 - `web_url`: The web address you'd like to your topic to link to (e.g. `https://github.com/topics/sass`).
 - `image_url`: The web address of an (ideally square) image that you'd like to appear with your topic.
@@ -84,30 +93,21 @@ Your website comes pre-configured with three topics (e.g. "Web design" and "Sass
 
 To **add a page** to your website (e.g. detailed resume):
 
-1. Create a new `.html` or `.md` file at the root of your repository.
+1. Create a new `.js` file under pages folder.
 2. Give it a filename that you want to be used in the page's URL (e.g. `http://yoursite.dev/filename`).
-3. At the start of your file, include the following [front matter](https://jekyllrb.com/docs/front-matter/):
-
-```
----
-layout: default
----
-```
-
-4. Save.
 
 ## Adding blog posts
 
 To **add a blog post** to your website:
 
-1. Create a new `.md` file in your repository's `/_posts/` directory.
+1. Create a new `.md` file in your repository's `/data/posts/` directory.
 2. Give it a filename using the following format:
 
 ```
-YEAR-MONTH-DAY-title.MARKUP
+YEAR-MONTH-DAY-title.md
 ```
 
-3. At the start of your file, include the following [front matter](https://jekyllrb.com/docs/front-matter/):
+3. At the start of your file, include the following [front matter](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/):
 
 ```
 ---
@@ -115,39 +115,33 @@ title: "The title of my blog post"
 ---
 ```
 
-Your website comes with a placeholder blog post that you can reference. Notably, its [front matter](https://jekyllrb.com/docs/front-matter/) declares `published` as `false`, so that it won't appear on your website.
-
-While you _can_ also define a `layout` in the front matter, your website is pre-configured to assign the `post` layout to all of the posts in your `/_posts/` directory. So you don't have to declare that in your posts, if you don't want to.
-
-Jekyll's conventions for authoring and managing blog posts is very flexible. You can [learn more in Jekyll's documentation for "Posts."](https://jekyllrb.com/docs/posts/)
+Your website comes with a placeholder blog post that you can reference. Notably, its [front matter](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/) declares `published` as `false`, so that it won't appear on your website.
 
 ## Content and templates
 
-To give you a sound foundation to start your personal website, your repository includes a handful of "includes" -- dynamic `.html` files that are re-used throughout your website. They're all stored in the `/_includes/` directory.
+To give you a sound foundation to start your personal website, your repository imports a handful of components that are re-used throughout your website. They're all stored in the `/components/` directory.
 
-There are the usual suspects, like `header.html` and `footer.html`. But there are few more worth pointing out:
+There are the usual suspects, like `layout.js` and `seo.js`. But there are few more worth pointing out:
 
-- `interests.html`: A heading and dynamic list of "My Interests," which is populated with the [topics](#topics) you list in your `_config.yml`.
-- `masthead.html`: A collection of your avatar, name, bio, and other metadata that's displayed prominently on all your webpages to help identify what the website is about.
-- `post-card.html`: A compact, summarized presentation of a blog post, re-used to display a listing of your latest blog posts.
-- `projects.html`: A heading and dynamic list of "My Projects," which is populated with a listing of your newest GitHub repositories.
-- `repo-card.html`: A compact, summarized presentation of a repository, re-used to display a listing of your GitHub repositories.
-- `thoughts.html`: A heading and dynamic list of "My Thoughts," which is populated with a listing of your latest blog posts.
-- `topic-card.html`: A compact, summarized presentation of a topic (defined in your `_config.yml`), re-used to display a listing of your interests.
+- `interests.js`: A heading and dynamic list of "My Interests," which is populated with the [topics](#topics) you list in your `/data/topcis.yaml`.
+- `masthead.js`: A collection of your avatar, name, bio, and other metadata that's displayed prominently on all your webpages to help identify what the website is about.
+- `postCard.js`: A compact, summarized presentation of a blog post, re-used to display a listing of your latest blog posts.
+- `projects.js`: A heading and dynamic list of "My Projects," which is populated with a listing of your newest GitHub repositories.
+- `repoCard.js`: A compact, summarized presentation of a repository, re-used to display a listing of your GitHub repositories.
+- `thoughts.js`: A heading and dynamic list of "My Thoughts," which is populated with a listing of your latest blog posts.
+- `topicCard.js`: A compact, summarized presentation of a topic (defined in your `/data/topics.yaml`), re-used to display a listing of your interests.
 
 ### Layouts
 
 Your repository comes with three layouts:
 
 - **default**: Not used by any of the built-in pages or posts, but useful for any new pages you create.
-- **home**: Used by your `index.html` homepage to display listings of your projects, interests, and (optionally) your blog posts.
-- **post**: Used by default by the posts in your `/_posts/` directory.
-
-Jekyll's convention for defining layouts is very flexible. You can [learn more about customizing your layouts in the Jekyll "Layouts" docs.](https://jekyllrb.com/docs/layouts/)
+- **home**: Used by your `/pages/index.js` homepage to display listings of your projects, interests, and (optionally) your blog posts.
+- **post**: Used by default by the posts in your `/data/posts/` directory.
 
 ## Styles
 
-Your website is pre-configured to use [GitHub's very flexible CSS framework called "Primer,"](https://styleguide.github.com/primer/). It's currently referenced within your `styles.scss` file, using the CSS import at-rule:
+Your website is pre-configured to use [GitHub's very flexible CSS framework called "Primer,"](https://styleguide.github.com/primer/). It's currently referenced within your `layout.scss` file, using the CSS import at-rule:
 
 ```
 @import url('https://unpkg.com/primer/build/build.css');
@@ -156,6 +150,11 @@ Your website is pre-configured to use [GitHub's very flexible CSS framework call
 You are, of course, welcome to remove it or replace it with another framework. Just bear in mind that the HTML that your website came pre-packaged with references multiple Primer "utility classes" to define things like column widths, margins, and background colors.
 
 You also have the option to add on to and extend Primer's styles by adding custom CSS to your `/assets/styles.scss` Sass stylesheet. By editing this file, you can customize your website's color scheme, typography, and more.
+
+## Original Repository
+This project is conversion to JS from original repository. I tried to follow the same file-folder structure as original repository.
+
+https://github.com/github/personal-website
 
 
 ## License
