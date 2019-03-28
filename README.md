@@ -18,7 +18,7 @@ Once you've found a home for your forked repository, it's yours. You're the owne
 
 ### GitHub Personal Access Token
 
-We need GitHub personal access toke to fetch data and generate content for our website using graphql api.
+We need GitHub personal access toke to fetch data and generate content for our website using graphql api. Create personal token for this app. Learn more [here](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
 
 * permissions
   - repo
