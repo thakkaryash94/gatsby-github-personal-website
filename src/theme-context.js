@@ -11,17 +11,22 @@ export const themes = {
   },
 }
 
+const localTheme = localStorage.getItem('theme') || 'light'
+
 const initialState = {
-  style: 'light',
-  theme: themes.light
+  style: localTheme,
+  theme: themes[`${localTheme}`]
 }
 
 const reducer = (state, action) => {
+  localStorage.setItem('theme', action.value)
   switch (action.type) {
     case 'TOGGLE_THEME':
       return state.style === 'light' ? { theme: themes.dark, style: 'dark' } : { theme: themes.light, style: 'light' }
     case 'CHANGE_THEME':
       return action.value === 'light' ? { theme: themes.light, style: 'light' } : { theme: themes.dark, style: 'dark' }
+    default:
+      return { theme: themes.light, style: 'light' }
   }
 }
 

@@ -13,6 +13,9 @@ const useSiteMetadata = () => {
       }
     `
   )
+  if (!localStorage.getItem('theme')) {
+    localStorage.setItem('theme', site.siteMetadata.style)
+  }
   return site.siteMetadata
 }
 

@@ -6,17 +6,12 @@
  */
 
 import React, { useContext, useEffect } from "react"
-import useSiteMetadata from '../hooks/siteMetaData'
-import { ThemeContext } from "../theme-context"
+import { ThemeContext } from '../theme-context'
 
 import "./layout.scss"
 
 function Layout({ children }) {
-  const { style } = useSiteMetadata()
-  const { state: { style: stateStyle, theme }, dispatch } = useContext(ThemeContext)
-  if (stateStyle !== style) {
-    dispatch({ type: 'CHANGE_THEME', value: style })
-  }
+  const { state: { theme } } = useContext(ThemeContext)
   useEffect(
     () => {
       document.body.style.backgroundColor = theme.background
