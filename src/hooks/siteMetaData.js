@@ -1,4 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby'
+const windowGlobal = typeof window !== 'undefined' && window
 
 const useSiteMetadata = () => {
   const { site } = useStaticQuery(
@@ -13,8 +14,8 @@ const useSiteMetadata = () => {
       }
     `
   )
-  if (!localStorage.getItem('theme')) {
-    localStorage.setItem('theme', site.siteMetadata.style)
+  if (windowGlobal.localStorage && !windowGlobal.localStorage.getItem('theme')) {
+    windowGlobal.localStorage.setItem('theme', site.siteMetadata.style)
   }
   return site.siteMetadata
 }

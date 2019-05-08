@@ -13,7 +13,7 @@ function mastHead({ metaData }) {
 
   function onThemeChange(e) {
     const newStyle = e.target.checked ? 'dark' : 'light'
-    localStorage.setItem('theme', newStyle)
+    localStorage && localStorage.setItem('theme', newStyle)
     dispatch({ type: 'CHANGE_THEME', value: newStyle })
   }
 
