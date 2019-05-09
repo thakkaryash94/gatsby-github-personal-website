@@ -56,7 +56,7 @@ To host our website on GitHub, we need to create a new branch name `gh-pages` an
 - We run below command to generate static build for our personal website. This command will create public folder with bunch of files-folders for our website.
 
 ```
-GITHUB_TOKEN=YOUR_GITHUB_TOKEN npm run build
+PATH_PREFIX=/gatsby-github-personal-website GITHUB_TOKEN=YOUR_GITHUB_TOKEN gatsby build --prefix-paths
 ```
 
 Now we have our static `public` folder, we have to push it `gh-pages` branch so that GitHub Pages can host those files and display it as our personal website. To do that, we have a handy `publish` script in `package.json`. Run below command to push your public folder to `gh-pages` branch. **Do not forget to build first before publish.**
