@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Emoji from 'react-emoji-render'
 import Octicon, { MarkGithub, Location, Mail } from '@githubprimer/octicons-react'

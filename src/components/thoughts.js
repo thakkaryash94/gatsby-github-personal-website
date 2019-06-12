@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 import PostCard from "./postCard"
-import { ThemeContext } from "../theme-context"
+import useThemeContext from "../hooks/themeContext"
 
 function Thoughts() {
-  const { state: { style } } = useContext(ThemeContext)
+  const { style } = useThemeContext()
   const { allMarkdownRemark: { edges } } = useStaticQuery(
     graphql`
       query {

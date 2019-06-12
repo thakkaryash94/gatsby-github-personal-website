@@ -5,13 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React, { useContext, useEffect } from "react"
-import { ThemeContext } from '../theme-context'
+import React, { useEffect } from "react"
+import useThemeContext from '../hooks/themeContext'
 
 import "./layout.scss"
 
 function Layout({ children }) {
-  const { state: { theme } } = useContext(ThemeContext)
+  const { theme } = useThemeContext()
   useEffect(
     () => {
       document.body.style.backgroundColor = theme.background

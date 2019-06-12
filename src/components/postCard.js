@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from "gatsby"
-import { ThemeContext } from "../theme-context"
+import useThemeContext from "../hooks/themeContext"
 
 export function formatePostDate(dateString) {
   const date = new Date(dateString)
@@ -8,7 +8,7 @@ export function formatePostDate(dateString) {
 }
 
 function PostCard({ post }) {
-  const { state: { style } } = useContext(ThemeContext)
+  const { style } = useThemeContext()
   return (
     <div className={`height-full text-left ${style === 'dark' ? 'box-shadow' : 'border border - gray - light'} bg-white rounded-1 p-3`}>
       < div className="d-flex flex-justify-between flex-items-start mb-1">

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Emoji from 'react-emoji-render'
-import { ThemeContext } from "../theme-context"
+import useThemeContext from "../hooks/themeContext"
 
 function RepoCard({ repository }) {
-  const { state: { style } } = useContext(ThemeContext)
+  const { style } = useThemeContext()
   return (
     <div className={`github-component height-full text-left ${style === 'dark' ? 'box-shadow' : 'border border-gray-light'} bg-white rounded-1 p-3`}>
       <div className="d-flex flex-justify-between flex-items-start mb-1">

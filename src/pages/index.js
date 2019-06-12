@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
+import React from "react"
 import "../components/Toggle.css"
 
 import Layout from "../components/layout"
-import { ThemeContext } from "../theme-context"
+import useThemeContext from "../hooks/themeContext"
 import MastHead from '../components/mastHead'
 import Projects from '../components/projects'
 import Interests from '../components/interests'
@@ -11,7 +11,7 @@ import SEO from '../components/seo'
 import useSiteMetadata from '../hooks/siteMetaData'
 
 function IndexPage() {
-  const { state: { style } } = useContext(ThemeContext)
+  const { style } = useThemeContext()
   const { layout } = useSiteMetadata()
   return <Layout>
     <SEO />
