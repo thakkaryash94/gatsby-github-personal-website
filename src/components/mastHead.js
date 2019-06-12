@@ -4,16 +4,16 @@ import Emoji from 'react-emoji-render'
 import Octicon, { MarkGithub, Location, Mail } from '@githubprimer/octicons-react'
 import Toggle from 'react-toggle'
 import useSiteMetadata from '../hooks/siteMetaData'
-import { ThemeContext } from "../theme-context"
+import useThemeContext from '../hooks/themeContext'
 
 
 function mastHead({ metaData }) {
   const { layout } = useSiteMetadata()
-  const { state: { style, theme }, dispatch } = useContext(ThemeContext)
+  const { style, theme, setTheme } = useThemeContext()
 
   function onThemeChange(e) {
     const newStyle = e.target.checked ? 'dark' : 'light'
-    dispatch({ type: 'CHANGE_THEME', value: newStyle })
+    setThene(newStyle)
   }
 
   const { github: { viewer: user } } = useStaticQuery(
