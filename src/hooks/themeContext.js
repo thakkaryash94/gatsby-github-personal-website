@@ -13,3 +13,5 @@ const useThemeContext = () => {
     setTheme,
   }
 }
+
+export default useThemeContext
