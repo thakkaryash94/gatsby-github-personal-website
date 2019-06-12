@@ -13,7 +13,7 @@ function mastHead({ metaData }) {
 
   function onThemeChange(e) {
     const newStyle = e.target.checked ? 'dark' : 'light'
-    setThene(newStyle)
+    setTheme(newStyle)
   }
 
   const { github: { viewer: user } } = useStaticQuery(
