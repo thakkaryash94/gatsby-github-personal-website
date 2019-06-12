@@ -17,18 +17,18 @@ const localTheme = windowGlobal.localStorage && windowGlobal.localStorage.getIte
 
 const initialState = {
   style: localTheme,
-  theme: themes[`${localTheme}`]
+  theme: themes[localTheme]
 }
 
-const reducer = (state, action) => {
-  windowGlobal.localStorage && windowGlobal.localStorage.setItem('theme', action.value)
-  switch (action.type) {
+const reducer = (state, {value, type}) => {
+  windowGlobal.localStorage && windowGlobal.localStorage.setItem('theme', value)
+  switch (type) {
     case 'TOGGLE_THEME':
       return state.style === 'light' ? { theme: themes.dark, style: 'dark' } : { theme: themes.light, style: 'light' }
     case 'CHANGE_THEME':
-      return action.value === 'light' ? { theme: themes.light, style: 'light' } : { theme: themes.dark, style: 'dark' }
+      return { theme: themes[value], style: value }
     default:
-      return { theme: themes.light, style: 'light' }
+      return state
   }
 }
 
@@ -37,14 +37,14 @@ const ThemeContext = createContext({
   dispatch: () => { }
 })
 
-function ThemeContextProvider(props) {
+function ThemeContextProvider({children}) {
   const [state, dispatch] = useReducer(reducer, initialState)
   const value = { state, dispatch }
   return (
-    <ThemeContext.Provider value={value}>{props.children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>
+      {children}
+    </ThemeContext.Provider>
   )
 }
 
-const ThemeContextConsumer = ThemeContext.Consumer
-
-export { ThemeContext, ThemeContextProvider, ThemeContextConsumer }
+export { ThemeContext, ThemeContextProvider }
