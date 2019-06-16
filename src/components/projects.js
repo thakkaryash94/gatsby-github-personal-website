@@ -1,10 +1,10 @@
-import React, { useContext } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import RepoCard from "./repoCard"
-import { ThemeContext } from "../theme-context"
+import useThemeContext from "../hooks/themeContext"
 
 function Projects() {
-  const { state: { style } } = useContext(ThemeContext)
+  const { style } = useThemeContext()
   const { github: { viewer: { repositories } } } = useStaticQuery(
     graphql`
       query {

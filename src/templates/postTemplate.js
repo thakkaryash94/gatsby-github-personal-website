@@ -1,14 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link, graphql } from "gatsby"
 import Octicon, { ChevronLeft } from '@githubprimer/octicons-react'
 import Layout from "../components/layout"
 import MastHead from '../components/mastHead'
 import useSiteMetadata from '../hooks/siteMetaData'
-import { ThemeContext } from "../theme-context"
+import useThemeContext from '../hooks/themeContext'
 import { formatePostDate } from '../components/postCard'
 
 export default ({ data }) => {
-  const { state: { style } } = useContext(ThemeContext)
+  const { style } = useThemeContext()
   const { layout } = useSiteMetadata()
   const post = data.markdownRemark
   return (

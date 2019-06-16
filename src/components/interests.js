@@ -1,10 +1,10 @@
-import React, { useContext } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import TopicCard from "./topicCard"
-import { ThemeContext } from "../theme-context"
+import useThemeContext from "../hooks/themeContext"
 
 function Topics() {
-  const { state: { style } } = useContext(ThemeContext)
+  const { style } = useThemeContext()
   const { allDataYaml: { edges } } = useStaticQuery(
     graphql`
       query {
