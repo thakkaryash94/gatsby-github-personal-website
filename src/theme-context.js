@@ -13,14 +13,14 @@ export const themes = {
 
 const windowGlobal = typeof window !== 'undefined' && window
 
-const localTheme = windowGlobal.localStorage && windowGlobal.localStorage.getItem('theme') || 'light'
+const localTheme = (windowGlobal.localStorage && windowGlobal.localStorage.getItem('theme')) || 'light'
 
 const initialState = {
   style: localTheme,
   theme: themes[localTheme]
 }
 
-const reducer = (state, {value, type}) => {
+const reducer = (state, { value, type }) => {
   windowGlobal.localStorage && windowGlobal.localStorage.setItem('theme', value)
   switch (type) {
     case 'TOGGLE_THEME':
@@ -37,7 +37,7 @@ const ThemeContext = createContext({
   dispatch: () => { }
 })
 
-function ThemeContextProvider({children}) {
+function ThemeContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState)
   const value = { state, dispatch }
   return (
