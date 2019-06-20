@@ -3,10 +3,11 @@ module.exports = {
     style: `light`,
     layout: `sidebar`
   },
-  pathPrefix: process.env.PATH_PREFIX || "",
+  pathPrefix: process.env.PATH_PREFIX || "/",
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
+    `gatsby-plugin-sass`,	
+    `gatsby-plugin-styled-components`,	  
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
