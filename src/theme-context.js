@@ -32,7 +32,7 @@ export const themes = {
 
 const windowGlobal = typeof window !== 'undefined' && window
 
-const localTheme = windowGlobal.localStorage && windowGlobal.localStorage.getItem('theme') || 'light'
+const localTheme = (windowGlobal.localStorage && windowGlobal.localStorage.getItem('theme')) || 'light'
 
 const initialState = {
   style: localTheme,
