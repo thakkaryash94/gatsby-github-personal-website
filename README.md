@@ -23,6 +23,8 @@ We need GitHub personal access toke to fetch data and generate content for our w
 * permissions
   - repo
     - public_repo
+  - admin:org
+    - read:org
   - user
     - read:user
     - user:email
