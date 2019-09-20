@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from "gatsby"
-import Octicon, { ChevronLeft } from '@githubprimer/octicons-react'
+import Octicon, { ChevronLeft } from '@primer/octicons-react'
 import Layout from "../components/layout"
 import MastHead from '../components/mastHead'
 import useSiteMetadata from '../hooks/siteMetaData'

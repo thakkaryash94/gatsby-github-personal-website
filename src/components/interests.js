@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import TopicCard from "./topicCard"
 import useThemeContext from "../hooks/themeContext"
 
-function Topics() {
+export default () => {
   const { style } = useThemeContext()
   const { allDataYaml: { edges } } = useStaticQuery(
     graphql`
@@ -37,5 +37,3 @@ function Topics() {
     </>
   )
 }
-
-export default Topics
