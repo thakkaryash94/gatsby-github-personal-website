@@ -98,7 +98,7 @@ To **add a page** to your website (e.g. detailed resume):
 1. Create a new `.js` file under pages folder.
 2. Give it a filename that you want to be used in the page's URL (e.g. `http://yoursite.dev/filename`).
 
-## Adding blog posts
+## Adding blog post
 
 To **add a blog post** to your website:
 
