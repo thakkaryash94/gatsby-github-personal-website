@@ -6,8 +6,8 @@ module.exports = {
   pathPrefix: process.env.PATH_PREFIX || "/",
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,	
-    `gatsby-plugin-styled-components`,	  
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-styled-components`,
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
