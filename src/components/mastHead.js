@@ -1,34 +1,21 @@
+import {Avatar, BorderBox, Box, Heading, Link as PrimerLink, StyledOcticon, Text} from '@primer/components'
+import {CircuitBoard, Link, Location, Mail, MarkGithub, Organization,} from '@primer/octicons-react'
+import {graphql, useStaticQuery} from 'gatsby'
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
 import Emoji from 'react-emoji-render'
-import {
-  CircuitBoard,
-  Link,
-  Location,
-  Mail,
-  MarkGithub,
-  Organization,
-} from '@primer/octicons-react'
-import {
-  StyledOcticon,
-  Heading,
-  Avatar,
-  Box,
-  Link as PrimerLink,
-  BorderBox,
-  Text
-} from '@primer/components'
 import Toggle from 'react-toggle'
+import styled from 'styled-components'
+import {Dev, Linkedin, Twitter} from 'styled-icons/fa-brands'
+
 import useSiteMetadata from '../hooks/siteMetaData'
 import useThemeContext from '../hooks/themeContext'
-import styled from 'styled-components'
 
 const StyledHr = styled.hr`
   ${props => props.color === 'dark' && 'border-top-color: whitesmoke;'}
 `
 
-export default ({ metaData }) => {
-  const { layout } = useSiteMetadata()
+export default ({metaData}) => {
+  const { layout, social } = useSiteMetadata()
   const { style, theme, setTheme } = useThemeContext()
 
   function onThemeChange(e) {
@@ -94,14 +81,14 @@ export default ({ metaData }) => {
     <>
       <Avatar
         src={avatarUrl}
-        alt="user-avatar"
-        className="circle"
+        alt='user-avatar'
+        className='circle'
         mb={3}
         size={150}
         borderRadius={'50%'}
         maxWidth={'150px'}
       />
-      <Heading color={style === 'dark' ? 'white' : undefined} mb={2} lh={'condensed'}>
+      <Heading color={theme.iconColor} mb={2} lh={'condensed'}>
         {name ? name : login}
       </Heading>
       <Box fontSize={4} mb={2}>
@@ -111,34 +98,57 @@ export default ({ metaData }) => {
               color={theme.iconColor}
               icon={MarkGithub}
               size={20}
-              verticalAlign="middle"
+              verticalAlign='middle'
               mr={2}
-              ariaLabel="GitHub"
+              ariaLabel='GitHub'
             />
             <PrimerLink
               href={`https://github.com/${login}`}
-              color={style === 'dark' ? 'white' : undefined}
+              color={theme.iconColor}
             >
               {login}
             </PrimerLink>
           </MetaComponent>
         )}
+        {social.dev && <PrimerLink
+          href={social.dev}
+          color={theme.iconColor}
+          target='_blank'>
+          <Dev size={20} color={theme.iconColor} title={`${name}'s DEV Profile`} />
+        </PrimerLink>
+        }
+        {social.twitter && <PrimerLink
+          href={social.twitter}
+          color={theme.iconColor}
+          marginLeft={2}
+          target='_blank'>
+          <Twitter size={20} color={theme.iconColor} title={`${name}'s Twitter Profile`} />
+        </PrimerLink>
+        }
+        {social.linkedIn && <PrimerLink
+          href={social.linkedIn}
+          color={theme.iconColor}
+          marginLeft={2}
+          target='_blank'>
+          <Linkedin size={20} color={theme.iconColor} title={`${name}'s LinkedIn Profile`} />
+        </PrimerLink>
+        }
       </Box>
       <StyledHr color={style} />
       {isDeveloperProgramMember && (
-        <MetaComponent color={style === 'dark' ? 'white' : undefined}>
+        <MetaComponent color={theme.iconColor}>
           <StyledOcticon
             color={theme.iconColor}
             icon={CircuitBoard}
             size={20}
-            verticalAlign="middle"
+            verticalAlign='middle'
             mr={2}
-            ariaLabel="Location"
+            ariaLabel='Location'
           />
           <BorderBox
             as={'span'} fontSize={5} border={0}
             color={'white'} bg={'green.5'} py={1} px={2}
-            title="Developer Program Member"
+            title='Developer Program Member'
             display={'inline-block'} borderRadius={2}
           >
             Developer Program Member
@@ -153,20 +163,20 @@ export default ({ metaData }) => {
       </Text>
       <Box mb={6} fontSize={4}>
         {company && (
-          <MetaComponent color={style === 'dark' ? 'white' : undefined}>
+          <MetaComponent color={theme.iconColor}>
             <StyledOcticon
               color={theme.iconColor}
               icon={Organization}
               size={20}
-              verticalAlign="middle"
+              verticalAlign='middle'
               mr={2}
-              ariaLabel="Location"
+              ariaLabel='Location'
             />
             {company}
           </MetaComponent>
         )}
         {location && (
-          <MetaComponent color={style === 'dark' ? 'white' : undefined}>
+          <MetaComponent color={theme.iconColor}>
             <StyledOcticon
               color={theme.iconColor}
               icon={Location}
@@ -190,7 +200,7 @@ export default ({ metaData }) => {
             />
             <PrimerLink
               href={`mailto:${email}`}
-              color={style === 'dark' ? 'white' : undefined}
+              color={theme.iconColor}
             >
               {email}
             </PrimerLink>
@@ -202,13 +212,13 @@ export default ({ metaData }) => {
               color={theme.iconColor}
               icon={Link}
               size={20}
-              verticalAlign="middle"
+              verticalAlign='middle'
               mr={2}
-              ariaLabel="email"
+              ariaLabel='email'
             />
             <PrimerLink
               href={websiteUrl}
-              color={style === 'dark' ? 'white' : undefined}
+              color={theme.iconColor}
             >
               {websiteUrl}
             </PrimerLink>
@@ -217,7 +227,7 @@ export default ({ metaData }) => {
         {isHireable && (
           <BorderBox
             display={'inline-block'} fontSize={5} borderRadius={2}
-            bg={'green.5'} py={1} px={2} title="Hire me" border={0}
+            bg={'green.5'} py={1} px={2} title='Hire me' border={0}
           >
             Available for hire
           </BorderBox>
@@ -245,8 +255,8 @@ export default ({ metaData }) => {
             icons={{
               checked: (
                 <img
-                  alt="dark-theme"
-                  src="data:image/png;base64,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"
+                  alt='dark-theme'
+                  src='data:image/png;base64,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'
                   width={16}
                   height={16}
                 />

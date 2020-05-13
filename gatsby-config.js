@@ -1,9 +1,10 @@
 module.exports = {
   siteMetadata: {
     style: `light`,
-    layout: `sidebar`
+    layout: `sidebar`,
+    social: {dev: ``, twitter: ``, linkedIn: ``}
   },
-  pathPrefix: process.env.PATH_PREFIX || "/",
+  pathPrefix: process.env.PATH_PREFIX || '/',
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
@@ -11,25 +12,19 @@ module.exports = {
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `yaml`,
-        path: `${__dirname}/src/data`
-      },
+      options: {name: `yaml`, path: `${__dirname}/src/data`},
     },
     {
       resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown-pages`,
-        path: `${__dirname}/src/data/posts`
-      },
+      options: {name: `markdown-pages`, path: `${__dirname}/src/data/posts`},
     },
     `gatsby-transformer-remark`,
     {
-      resolve: "gatsby-source-graphql",
+      resolve: 'gatsby-source-graphql',
       options: {
-        typeName: "GitHub",
-        fieldName: "github",
-        url: "https://api.github.com/graphql",
+        typeName: 'GitHub',
+        fieldName: 'github',
+        url: 'https://api.github.com/graphql',
         headers: {
           Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
         }
