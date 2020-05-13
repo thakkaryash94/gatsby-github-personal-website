@@ -88,7 +88,7 @@ export default ({metaData}) => {
         borderRadius={'50%'}
         maxWidth={'150px'}
       />
-      <Heading color={theme.iconColor} mb={2} lh={'condensed'}>
+      <Heading style={{color:theme.iconColor}} mb={2} lh={'condensed'}>
         {name ? name : login}
       </Heading>
       <Box fontSize={4} mb={2}>
@@ -104,6 +104,7 @@ export default ({metaData}) => {
             />
             <PrimerLink
               href={`https://github.com/${login}`}
+              target='_blank'
               color={theme.iconColor}
             >
               {login}
@@ -234,7 +235,7 @@ export default ({metaData}) => {
         )}
         <StyledHr color={style} />
         <Box mb={1}>
-          <Heading mb={2} fontSize={4} color={style === 'dark' && 'white'}>
+          <Heading mb={2} fontSize={4} style={{color: style === 'dark' ? 'white' : 'black'}}>
             Organizations
           </Heading>
           {organizations &&

@@ -51,7 +51,7 @@ GITHUB_TOKEN=YOUR_GITHUB_TOKEN npm run develop
 
 When you host your personal website's code on GitHub, you get the support of free hosting through GitHub Pages.
 
-GitHub Pages support jekyll projects out of the box. Our project is in JavaScript, that's why we have to do follow certain steps to host our personal website.
+GitHub Pages support jekyll projects out of the box. Our project is in JavaScript, that's why we have to follow certain steps to host our personal website.
 
 To host our website on GitHub, we need to create a new branch name `gh-pages` and change GitHub Pages source to `gh-pages`. You can read out it in details [here](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages). Now follow below steps to publish your personal website.
 
