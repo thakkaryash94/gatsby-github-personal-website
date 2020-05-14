@@ -1,11 +1,11 @@
-import {Avatar, BorderBox, Box, Heading, Link as PrimerLink, StyledOcticon, Text} from '@primer/components'
-import {CircuitBoard, Link, Location, Mail, MarkGithub, Organization,} from '@primer/octicons-react'
-import {graphql, useStaticQuery} from 'gatsby'
+import { Avatar, BorderBox, Box, Heading, Link as PrimerLink, StyledOcticon, Text } from '@primer/components'
+import { CircuitBoard, Link, Location, Mail, MarkGithub, Organization, } from '@primer/octicons-react'
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import Emoji from 'react-emoji-render'
 import Toggle from 'react-toggle'
 import styled from 'styled-components'
-import {Dev, Linkedin, Twitter} from 'styled-icons/fa-brands'
+import { Dev, Linkedin, Twitter } from 'styled-icons/fa-brands'
 
 import useSiteMetadata from '../hooks/siteMetaData'
 import useThemeContext from '../hooks/themeContext'
@@ -14,7 +14,7 @@ const StyledHr = styled.hr`
   ${props => props.color === 'dark' && 'border-top-color: whitesmoke;'}
 `
 
-export default ({metaData}) => {
+export default ({ metaData }) => {
   const { layout, social } = useSiteMetadata()
   const { style, theme, setTheme } = useThemeContext()
 
@@ -88,7 +88,7 @@ export default ({metaData}) => {
         borderRadius={'50%'}
         maxWidth={'150px'}
       />
-      <Heading style={{color:theme.iconColor}} mb={2} lh={'condensed'}>
+      <Heading style={{ color: theme.iconColor }} mb={2} lh={'condensed'}>
         {name ? name : login}
       </Heading>
       <Box fontSize={4} mb={2}>
@@ -235,7 +235,7 @@ export default ({metaData}) => {
         )}
         <StyledHr color={style} />
         <Box mb={1}>
-          <Heading mb={2} fontSize={4} style={{color: style === 'dark' ? 'white' : 'black'}}>
+          <Heading mb={2} fontSize={4} style={{ color: style === 'dark' ? 'white' : 'black' }}>
             Organizations
           </Heading>
           {organizations &&
