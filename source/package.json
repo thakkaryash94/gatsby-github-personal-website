@@ -3,35 +3,36 @@
   "private": false,
   "description": "Repo for github portfolio using gatsby",
   "homepage": "https://github.com/thakkaryash94/gatsby-github-personal-website",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Yash Thakkar <thakkaryash94@gmail.com>",
   "dependencies": {
     "@primer/components": "^19.0.0",
     "@primer/octicons-react": "^9.6.0",
     "babel-plugin-styled-components": "^1.10.7",
+    "copyfiles": "^2.3.0",
+    "del": "^5.1.0",
     "dotenv-webpack": "^1.8.0",
-    "gatsby": "^2.21.28",
-    "gatsby-plugin-react-helmet": "^3.3.1",
-    "gatsby-plugin-sass": "^2.3.1",
-    "gatsby-plugin-styled-components": "^3.3.1",
-    "gatsby-remark-prismjs": "^3.5.1",
-    "gatsby-source-filesystem": "^2.3.3",
-    "gatsby-source-graphql": "^2.5.1",
-    "gatsby-transformer-remark": "^2.8.8",
-    "gatsby-transformer-yaml": "^2.4.1",
+    "gatsby": "^2.22.17",
+    "gatsby-plugin-react-helmet": "^3.3.3",
+    "gatsby-plugin-sass": "^2.3.3",
+    "gatsby-plugin-styled-components": "^3.3.3",
+    "gatsby-remark-prismjs": "^3.5.3",
+    "gatsby-source-filesystem": "^2.3.10",
+    "gatsby-source-graphql": "^2.5.3",
+    "gatsby-transformer-remark": "^2.8.14",
+    "gatsby-transformer-yaml": "^2.4.3",
     "node-sass": "^4.14.1",
     "prismjs": "^1.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-emoji-render": "^1.2.4",
-    "react-helmet": "^5.2.1",
+    "react-helmet": "^6.0.0",
     "react-toggle": "^4.1.1",
-    "styled-components": "^4.4.1",
-    "styled-icons": "^9.5.0"
+    "styled-components": "^5.1.1",
+    "styled-icons": "^10.2.1"
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0",
-    "prettier": "^1.19.1"
+    "prettier": "^2.0.5"
   },
   "keywords": [
     "gatsby"
@@ -40,12 +41,11 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "gh-build": "npm run format && npm run build && node cleanup",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "publish": "gh-pages -d public",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "deploy": "npm run format && npm run build && npm run publish"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "repository": {
     "type": "git",

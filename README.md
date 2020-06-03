@@ -12,7 +12,7 @@ It's all possible using the combination of [gatsbyjs](https://www.gatsbyjs.org/d
 
 ### Fork this repo
 
-You'll be making your own copy of the "personal website starter" repository so you have your own project to customize. A "fork" is a copy of a repository. So select "Fork" atop [the `thakkaryash94/gatsby-github-personal-website` repository](https://github.com/thakkaryash94/gatsby-github-personal-website).
+You'll be making your own copy of the "personal website starter" repository so you have your own project to customize. A "fork" is a copy of a repository. So select "Fork" atop the [thakkaryash94/gatsby-github-personal-website` repository](https://github.com/thakkaryash94/gatsby-github-personal-website).
 
 Once you've found a home for your forked repository, it's yours. You're the owner, so you're ready to publish, if you wish.
 
@@ -53,18 +53,13 @@ When you host your personal website's code on GitHub, you get the support of fre
 
 GitHub Pages support jekyll projects out of the box. Our project is in JavaScript, that's why we have to follow certain steps to host our personal website.
 
-To host our website on GitHub, we need to create a new branch name `gh-pages` and change GitHub Pages source to `gh-pages`. You can read out it in details [here](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages). Now follow below steps to publish your personal website.
-
 - We run below command to generate static build for our personal website. This command will create public folder with bunch of files-folders for our website.
 
 ```
-PATH_PREFIX=/gatsby-github-personal-website GITHUB_TOKEN=YOUR_GITHUB_TOKEN gatsby build --prefix-paths
+GITHUB_TOKEN=YOUR_GITHUB_TOKEN npm run gh-build
 ```
 
-Now we have our static `public` folder, we have to push it `gh-pages` branch so that GitHub Pages can host those files and display it as our personal website. To do that, we have a handy `publish` script in `package.json`. Run below command to push your public folder to `gh-pages` branch. **Do not forget to build first before publish.**
-```
-npm run publish
-```
+Now, you will see, all files from public folder is copied in root directory.Our source code is in `source` folder and all the static public files are at the root path. By default, GitHub serves root path as the website content. We already have `index.html` and other required static files on root path. So we don't need to do anything else. We just need to commit and push the code and GitHub will start serving our personal website.
 
 **If you want to use a custom domain**, you'll want to add it to your repository's "Custom domain" settings on github.com. And then register and/or [configure your domain with a DNS provider](https://help.github.com/articles/quick-start-setting-up-a-custom-domain/).
 
